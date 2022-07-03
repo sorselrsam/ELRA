@@ -441,7 +441,7 @@ async def vc_playlist(event, perm):
 @R0R77.on(events.NewMessage(pattern="^[?!/]مغادرة"))
 @is_admin
 async def leavevc(event, perm):
-    razan = await event.reply("Processing")
+    razan = await event.reply("- يرجى الانتظار قليلا")
     chat_id = event.chat_id
     from_user = vcmention(event.sender)
     if from_user:
