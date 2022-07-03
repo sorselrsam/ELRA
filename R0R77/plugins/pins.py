@@ -1,7 +1,9 @@
-from telethon import events, Button, types
-from R0R77 import R0R77
+import os
+
+from telethon import Button, events, types
 from R0R77.status import *
-import R0R77
+from R0R77 import *
+
 
 PINS_TEXT = """
 **✘ اوامر تثبيت والغاء التثبيت لرسائل في المجموعة**
