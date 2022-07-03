@@ -65,7 +65,7 @@ async def lock(event, perm):
        await event.reply("- تم قفل الكل")
 
 
-@R0R77.on(events.NewMessage(pattern="^[!?/]unlock ?(.*)"))
+@R0R77.on(events.NewMessage(pattern="^[!?/]فتح ?(.*)"))
 @is_admin
 async def unlock(event, perm):
     if not perm.change_info:
