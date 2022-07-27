@@ -14,7 +14,7 @@ from pytgcalls.exceptions import (
     NoActiveGroupCall,
     NotInGroupCallError
 )
-from Mahmod777777.status import *
+from R0R77.status import *
 from telethon.tl.functions.users import GetFullUserRequest
 from telethon.tl.functions.messages import ExportChatInviteRequest
 import telethon.utils
@@ -27,11 +27,11 @@ from youtubesearchpython import VideosSearch
  
 fotoplay = "https://telegra.ph/file/b6402152be44d90836339.jpg"
 ngantri = "https://telegra.ph/file/b6402152be44d90836339.jpg"
-from Mahmod777777 import call_py, Mahmod777777, client as Client
-owner = "2125600195"
-from Mahmod777777.helpers.yt_dlp import bash
-from Mahmod777777.helpers.chattitle import CHAT_TITLE
-from Mahmod777777.helpers.queues import (
+from R0R77 import call_py, R0R77, client as Client
+owner = "1669178360"
+from R0R77.helpers.yt_dlp import bash
+from R0R77.helpers.chattitle import CHAT_TITLE
+from R0R77.helpers.queues import (
     QUEUE,
     add_to_queue,
     clear_queue,
@@ -41,7 +41,7 @@ from Mahmod777777.helpers.queues import (
 from telethon import Button, events
 from Config import Config
 
-from Mahmod777777.helpers.thumbnail import gen_thumb
+from R0R77.helpers.thumbnail import gen_thumb
 
 
 def vcmention(user):
@@ -119,7 +119,7 @@ async def skip_current_song(chat_id: int):
     return [songname, link, type]
 
 
-@Mahmod777777.on(events.callbackquery.CallbackQuery(data="cls"))
+@R0R77.on(events.callbackquery.CallbackQuery(data="cls"))
 async def _(event):
 
      await event.delete()
@@ -130,7 +130,7 @@ btnn =[
 
 
 #play
-@Mahmod777777.on(events.NewMessage(pattern="^[?/]تشغيل"))
+@R0R77.on(events.NewMessage(pattern="^[?!/]تشغيل"))
 async def play(event):
     title = ' '.join(event.text[5:])
     replied = await event.get_reply_message()
@@ -147,7 +147,7 @@ async def play(event):
         or not replied
         and not title
     ):
-        return await event.client.send_file(chat_id, Config.CMD_IMG, caption="**يجب عليك كتابة عنوان الشيء الذي تريد تشغيله**\n\n **مثال**: `تشغيل سورة الكهف`", buttons=btnn)
+        return await event.client.send_file(chat_id, Config.CMD_IMG, caption="**يجب عليك كتابة عنوان الشيء الذي تريد تشغيله**\n\n **مثال**: `!تشغيل سورة الكهف`", buttons=btnn)
     elif replied and not replied.audio and not replied.voice or not replied:
         botman = await event.reply("يتم التعرف على البيانات انتظر . . .")
         query = event.text.split(maxsplit=1)[1]
@@ -227,7 +227,7 @@ async def play(event):
 
 
 #end
-@Mahmod777777.on(events.NewMessage(pattern="^[/?]انهاء"))
+@R0R77.on(events.NewMessage(pattern="^[/?!]انهاء"))
 @is_admin
 async def vc_end(event, perm):
     chat_id = event.chat_id
@@ -245,7 +245,7 @@ async def vc_end(event, perm):
 
 
 
-@Mahmod777777.on(events.NewMessage(pattern="^[?/]فيديو"))
+@R0R77.on(events.NewMessage(pattern="^[?!/]فيديو"))
 async def vplay(event):
     if Config.HEROKU_MODE == "ENABLE":
         await event.reply("- لا يمكنك استخدام هذا الامر لانك تستخدم هيروكو في التنصيب")
@@ -267,7 +267,7 @@ async def vplay(event):
         or not replied
         and not title
     ):
-        return await event.client.send_file(chat_id, Config.CMD_IMG, caption="**يجب عليك كتابة عنوان لتشغيله**\n\n **مثال**: `فيديو قران`", buttons=btnn)
+        return await event.client.send_file(chat_id, Config.CMD_IMG, caption="**يجب عليك كتابة عنوان لتشغيله**\n\n **مثال**: `!فيديو قران`", buttons=btnn)
     if replied and not replied.video and not replied.document:
         razan = await event.reply("انتظر قليلا يتم التعرف")
         query = event.text.split(maxsplit=1)[1]
@@ -408,7 +408,7 @@ async def vplay(event):
 
 
 #playlist
-@Mahmod777777.on(events.NewMessage(pattern="^[?/]التشغيل"))
+@R0R77.on(events.NewMessage(pattern="^[?!/]التشغيل"))
 @is_admin
 async def vc_playlist(event, perm):
     chat_id = event.chat_id
@@ -438,7 +438,7 @@ async def vc_playlist(event, perm):
 
 
 #كود المغادرة
-@Mahmod777777.on(events.NewMessage(pattern="^[?/]مغادرة"))
+@R0R77.on(events.NewMessage(pattern="^[?!/]مغادرة"))
 @is_admin
 async def leavevc(event, perm):
     razan = await event.reply("- يرجى الانتظار قليلا")
@@ -455,7 +455,7 @@ async def leavevc(event, perm):
 
 
 
-@Mahmod777777.on(events.NewMessage(pattern="^[?/]تخطي"))
+@R0R77.on(events.NewMessage(pattern="^[?!/]تخطي"))
 @is_admin
 async def vc_skip(event, perm):
     chat_id = event.chat_id
@@ -477,14 +477,14 @@ async def vc_skip(event, perm):
             items = [int(x) for x in skip.split(" ") if x.isdigit()]
             items.sort(reverse=True)
             for x in items:
-                if x = 0:
+                if x != 0:
                     hm = await skip_item(chat_id, x)
-                    if hm = 0:
+                    if hm != 0:
                         DELQUE = DELQUE + "\n" + f"**#{x}** - {hm}"
             await event.reply(DELQUE)
 
 
-@Mahmod777777.on(events.NewMessage(pattern="^[?/]ايقاف"))
+@R0R77.on(events.NewMessage(pattern="^[?!/]ايقاف"))
 @is_admin
 async def vc_pause(event, perm):
     chat_id = event.chat_id
@@ -499,7 +499,7 @@ async def vc_pause(event, perm):
 
 
 
-@Mahmod777777.on(events.NewMessage(pattern="^[?/]استئناف"))
+@R0R77.on(events.NewMessage(pattern="^[?!/]استئناف"))
 @is_admin
 async def vc_resume(event, perm):
     chat_id = event.chat_id

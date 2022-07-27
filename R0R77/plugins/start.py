@@ -1,4 +1,4 @@
-from Mahmod777777 import Mahmod777777, BOT_USERNAME
+from R0R77 import R0R77, BOT_USERNAME
 from Config import Config
 from telethon import events, Button
 
@@ -15,7 +15,7 @@ PM_START_TEXT = """
 ✘ **اضغط على الاسفل لعرض الاوامر الخاص ه بي**.
 """
 
-@Mahmod777777.on(events.NewMessage(pattern="^[?!/]start$"))
+@R0R77.on(events.NewMessage(pattern="^[?!/]start$"))
 async def start(event):
 
     if event.is_private:
@@ -24,7 +24,7 @@ async def start(event):
              caption=PM_START_TEXT.format(event.sender.first_name), 
              buttons=[
         [Button.url("➕ اضغط هنا لأضافتي", f"https://t.me/{BOT_USERNAME}?startgroup=true")],
-        [Button.url("السورس", "https://github.com/Mahmod777777/Telethon-Music")],
+        [Button.url("السورس", "https://github.com/R0R77/Telethon-Music")],
         [Button.url("الدعم", f"https://t.me/{Config.SUPPORT}"), Button.url("القناة", f"https://t.me/{Config.CHANNEL}")],
         [Button.inline("الاوامر", data="help")]])
        return
@@ -35,12 +35,12 @@ async def start(event):
 
 
 
-@Mahmod777777.on(events.callbackquery.CallbackQuery(data="start"))
+@R0R77.on(events.callbackquery.CallbackQuery(data="start"))
 async def _(event):
     if event.is_private:
        await event.edit(PM_START_TEXT.format(event.sender.first_name), buttons=[
         [Button.url("➕ اضغط هنا لاضافتي", f"https://t.me/{BOT_USERNAME}?startgroup=true")],
-        [Button.url("السورس", "https://github.com/Mahmod777777/Telethon-Music")],
+        [Button.url("السورس", "https://github.com/R0R77/Telethon-Music")],
         [Button.url("الدعم", f"https://t.me/{Config.SUPPORT}"), Button.url("القناة", f"https://t.me/{Config.CHANNEL}")],
         [Button.inline("الاوامر", data="help")]])
        return
