@@ -119,7 +119,7 @@ async def skip_current_song(chat_id: int):
     return [songname, link, type]
 
 
-@R0R77.on(events.callbackquery.CallbackQuery(data="cls"))
+@Mahmod777777.on(events.callbackquery.CallbackQuery(data="cls"))
 async def _(event):
 
      await event.delete()
@@ -130,7 +130,7 @@ btnn =[
 
 
 #play
-@R0R77.on(events.NewMessage(pattern="^[?!/]تشغيل"))
+@Mahmod777777.on(events.NewMessage(pattern="^[?!/]تشغيل"))
 async def play(event):
     title = ' '.join(event.text[5:])
     replied = await event.get_reply_message()
@@ -149,7 +149,7 @@ async def play(event):
     ):
         return await event.client.send_file(chat_id, Config.CMD_IMG, caption="**يجب عليك كتابة عنوان الشيء الذي تريد تشغيله**\n\n **مثال**: `!تشغيل سورة الكهف`", buttons=btnn)
     elif replied and not replied.audio and not replied.voice or not replied:
-        botman = await event.reply("يتم التعرف على البيانات انتظر . . .")
+        botman = await event.reply("⚡")
         query = event.text.split(maxsplit=1)[1]
         search = ytsearch(query)
         if search == 0:
@@ -227,7 +227,7 @@ async def play(event):
 
 
 #end
-@R0R77.on(events.NewMessage(pattern="^[/?!]انهاء"))
+@Mahmod777777.on(events.NewMessage(pattern="^[/?!]انهاء"))
 @is_admin
 async def vc_end(event, perm):
     chat_id = event.chat_id
@@ -245,7 +245,7 @@ async def vc_end(event, perm):
 
 
 
-@R0R77.on(events.NewMessage(pattern="^[?!/]فيديو"))
+@Mahmod777777.on(events.NewMessage(pattern="^[?!/]فيديو"))
 async def vplay(event):
     if Config.HEROKU_MODE == "ENABLE":
         await event.reply("- لا يمكنك استخدام هذا الامر لانك تستخدم هيروكو في التنصيب")
@@ -408,7 +408,7 @@ async def vplay(event):
 
 
 #playlist
-@R0R77.on(events.NewMessage(pattern="^[?!/]التشغيل"))
+@Mahmod777777.on(events.NewMessage(pattern="^[?!/]التشغيل"))
 @is_admin
 async def vc_playlist(event, perm):
     chat_id = event.chat_id
@@ -438,7 +438,7 @@ async def vc_playlist(event, perm):
 
 
 #كود المغادرة
-@R0R77.on(events.NewMessage(pattern="^[?!/]مغادرة"))
+@Mahmod777777.on(events.NewMessage(pattern="^[?!/]مغادرة"))
 @is_admin
 async def leavevc(event, perm):
     razan = await event.reply("- يرجى الانتظار قليلا")
@@ -455,7 +455,7 @@ async def leavevc(event, perm):
 
 
 
-@R0R77.on(events.NewMessage(pattern="^[?!/]تخطي"))
+@Mahmod777777.on(events.NewMessage(pattern="^[?!/]تخطي"))
 @is_admin
 async def vc_skip(event, perm):
     chat_id = event.chat_id
@@ -484,7 +484,7 @@ async def vc_skip(event, perm):
             await event.reply(DELQUE)
 
 
-@R0R77.on(events.NewMessage(pattern="^[?!/]ايقاف"))
+@Mahmod777777.on(events.NewMessage(pattern="^[?!/]ايقاف"))
 @is_admin
 async def vc_pause(event, perm):
     chat_id = event.chat_id
@@ -499,7 +499,7 @@ async def vc_pause(event, perm):
 
 
 
-@R0R77.on(events.NewMessage(pattern="^[?!/]استئناف"))
+@Mahmod777777.on(events.NewMessage(pattern="^[?!/]استئناف"))
 @is_admin
 async def vc_resume(event, perm):
     chat_id = event.chat_id
